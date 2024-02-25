@@ -1,15 +1,21 @@
-import * as Select from '@radix-ui/react-select'
-import { ChevronDown } from 'lucide-react'
 import { ReactNode } from 'react'
 
-interface SelectFieldProps {
+import * as Select from '@radix-ui/react-select'
+
+import { ChevronDown } from 'lucide-react'
+
+interface SelectFieldProps extends Select.SelectProps {
   children: ReactNode
   placeholder?: string
 }
 
-export const SelectField = ({ placeholder, children }: SelectFieldProps) => {
+export const SelectField = ({
+  placeholder,
+  children,
+  ...props
+}: SelectFieldProps) => {
   return (
-    <Select.Root>
+    <Select.Root {...props}>
       <Select.Trigger className="flex items-center gap-2 bg-sky-100 p-2 rounded-lg text-sky-950">
         <Select.Value placeholder={placeholder} />
         <Select.Icon>
