@@ -11,11 +11,13 @@ export const SearchCityModal = () => {
   const [searchParam, setSearchParam] = useState<string>('')
   const [modalVisibility, setModalVisibility] = useState(false)
 
+  // 👉🏻 Controla o input de busca.
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
     setSearchParam(value)
   }
 
+  // 👉🏻 Realiza Toggle na visibilidade da modal.
   const toggleModalVisibility = () => {
     setModalVisibility(!modalVisibility)
   }
@@ -37,7 +39,10 @@ export const SearchCityModal = () => {
           onChange={handleSearchInputChange}
         />
 
-        <SearchCityList searchParam={searchParam} />
+        <SearchCityList
+          searchParam={searchParam}
+          toggleModalVisibility={toggleModalVisibility}
+        />
       </Modal.Content>
     </Modal.Root>
   )
