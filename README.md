@@ -35,7 +35,7 @@ A VeriTemp é a sua ferramenta simples e intuitiva para verificar condições cl
 - **Histórico:** É possível visualizar todas  as pesquisas climáticas realizadas, facilitando o acompanhamento meteorológicas ao longo do tempo.
 
 ## APIs
-- [OpenWeather](https://openweathermap.org/)
+- [Open Weather](https://openweathermap.org/)
 - [Open Meteo](https://open-meteo.com/)
 
 ## Variaveis de ambiente 🕵🏻‍♂️
