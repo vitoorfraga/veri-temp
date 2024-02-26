@@ -34,7 +34,6 @@ const parseOpenWeatherData = (
 }
 
 const parseOpenMeteoData = (response: AxiosResponse): WeatherForecastType[] => {
-  console.log(response)
   //  👉🏻 Extrai dados referentes ao clima atual.
   const current: OpenMeteoGeolocationCurrent = response.data.current
 
