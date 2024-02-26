@@ -1,12 +1,12 @@
 import { CurrentWeatherCard } from '../../components/CurrentWeatherCard'
 import { WeatherForecastCard } from '../../components/WeatherForecastCard'
-import { AxiosError } from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { HomePageLoading } from './loading'
 import { useContext } from 'react'
 import { WeatherForecastServiceContext } from '../../contexts/WeatherForecastContext'
 import { Alert } from '../../components/Alert'
 import { parseWeatherForecastService } from '../../helpers/parseWeatherForecastService'
+import { getWeatherForecastWithGeolocation } from '../../helpers/getWeatherForecastWithGeolocation'
 
 interface CurrentWeatherForecastProps {
   geolocation: {
@@ -18,44 +18,12 @@ interface CurrentWeatherForecastProps {
 export const CurrentWeatherForecast = ({
   geolocation,
 }: CurrentWeatherForecastProps) => {
-  const { selectedAPIService, fetchWeatherForecast } = useContext(
-    WeatherForecastServiceContext,
-  )
-
-  function getWeatherForecastWithGeolocation() {
-    if (selectedAPIService === 'openWeather') {
-      return fetchWeatherForecast
-        ?.get('/data/2.5/forecast?', {
-          params: {
-            lat: geolocation?.lat,
-            lon: geolocation?.long,
-          },
-        })
-        .then((response) => {
-          return response
-        })
-        .catch((error: AxiosError) => {
-          throw error
-        })
-    }
-    return fetchWeatherForecast
-      ?.get('v1/forecast', {
-        params: {
-          latitude: geolocation.lat,
-          longitude: geolocation.long,
-        },
-      })
-      .then((response) => {
-        return response
-      })
-      .catch((err) => {
-        throw err
-      })
-  }
+  const { selectedAPIService } = useContext(WeatherForecastServiceContext)
 
   const { data, isLoading, isFetching, isError, error } = useQuery({
     queryKey: ['weatherForest', geolocation, selectedAPIService],
-    queryFn: () => getWeatherForecastWithGeolocation(),
+    queryFn: () =>
+      getWeatherForecastWithGeolocation({ geolocation, selectedAPIService }),
     enabled: Boolean(geolocation), // 👈🏻 Desabilita a chamada inicial
   })
 

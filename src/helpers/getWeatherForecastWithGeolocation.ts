@@ -13,6 +13,7 @@ export const getWeatherForecastWithGeolocation = ({
   geolocation,
   selectedAPIService,
 }: getWeatherForecastWithGeolocationParams) => {
+  // 👉🏻 Verifica qual serviço de previsão do tempo foi selecionado.
   if (selectedAPIService === 'openWeather') {
     return fetchOpenWeatherAPI.get('/data/2.5/forecast?', {
       params: {
