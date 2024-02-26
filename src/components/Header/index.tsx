@@ -18,7 +18,9 @@ export const Header = () => {
   return (
     <header className="h-16 border-b border-zinc-200 px-14 flex items-center justify-between">
       <div className="flex items-center gap-11">
-        <h1 className="text-sky-800 text-xl font-bold">VeriTemp</h1>
+        <Link to="/" className="text-sky-800 text-xl font-bold">
+          VeriTemp
+        </Link>
         <SearchCityModal />
       </div>
 
