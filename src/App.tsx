@@ -3,6 +3,7 @@ import { router } from './route'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WeatherForecastServiceProvider } from './contexts/WeatherForecastContext'
+import { Toaster } from 'sonner'
 
 function App() {
   const queryClient = new QueryClient()
@@ -12,6 +13,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
+
+      <Toaster />
     </WeatherForecastServiceProvider>
   )
 }
