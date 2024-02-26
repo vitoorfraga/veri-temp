@@ -38,7 +38,7 @@ A VeriTemp é a sua ferramenta simples e intuitiva para verificar condições cl
 ## Variaveis de ambiente 🕵🏻‍♂️
 Para executar este projeto, você precisará adicionar as seguintes variáveis de ambiente ao seu arquivo .env.
 
-`OPEN_WEATHER_API_KEY`
+`VITE_OPEN_WEATHER_API_KEY`
 
 ## Executar o projeto 🏆
 1. Realize o clone do repositório
