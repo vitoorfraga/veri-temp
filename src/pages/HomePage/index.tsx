@@ -5,6 +5,7 @@ import { PageTitle } from '../../components/PageTitle'
 import { CurrentWeatherForecast } from './CurrentWeatherForecast'
 
 import { WeatherForecastTitle } from './WeatherForecastTitle'
+import { ExternalLink } from '../../components/ExternalLink'
 
 export const HomePage = () => {
   const [searchParams] = useSearchParams()
@@ -18,9 +19,26 @@ export const HomePage = () => {
   // 👉🏻 Se latitude e longitude não existirem, exibe mensagem.
   if (!latitudeAndLongitudeExists) {
     return (
-      <section className="px-14 space-y-6">
-        <PageTitle className="mt-12">Procure por uma localização</PageTitle>
-        <p>Utilize o botão acima para procurar por uma cidade ☀️.</p>
+      <section className="px-14 space-y-6  h-full mt-48 w-fit ">
+        <PageTitle className="mt-12">Bem-vindo(a) ao VeriTemp ☀️</PageTitle>
+        <p>
+          Parece que você ainda não selecionou uma localização. Por favor,
+          utilize o botão localizado no cabeçalho.
+        </p>
+
+        <div className="flex gap-2">
+          <ExternalLink href="https://github.com/vitoorfraga?tab=repositories">
+            Github
+          </ExternalLink>
+
+          <ExternalLink href="https://www.linkedin.com/in/vitoorfraga/">
+            Linkedin
+          </ExternalLink>
+
+          <ExternalLink href="https://www.youtube.com/@vitoorfraga">
+            Youtube
+          </ExternalLink>
+        </div>
       </section>
     )
   }
