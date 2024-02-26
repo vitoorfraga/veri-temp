@@ -8,7 +8,12 @@ interface PageTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 
 export const PageTitle = ({ children, className }: PageTitleProps) => {
   return (
-    <h1 className={twMerge('font-bold text-4xl text-sky-950', className)}>
+    <h1
+      className={twMerge(
+        'font-bold text-4xl text-sky-950 flex gap-3',
+        className,
+      )}
+    >
       {children}
     </h1>
   )
