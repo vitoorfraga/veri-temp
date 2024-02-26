@@ -6,13 +6,21 @@ import {
   DialogContentProps,
 } from '@radix-ui/react-dialog'
 import { XIcon } from 'lucide-react'
+import { twMerge } from 'tailwind-merge'
 
-export const ModalContent = ({ children, ...props }: DialogContentProps) => {
+export const ModalContent = ({
+  children,
+  className,
+  ...props
+}: DialogContentProps) => {
   return (
     <DialogPortal>
       <DialogOverlay className="bg-black/25 fixed inset-0" />
       <DialogContent
-        className=" fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-white p-[25px] focus:outline-none min-h-48"
+        className={twMerge(
+          'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-lg bg-white p-[25px] focus:outline-none min-h-48',
+          className,
+        )}
         {...props}
         forceMount={true}
       >

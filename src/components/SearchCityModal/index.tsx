@@ -31,7 +31,7 @@ export const SearchCityModal = () => {
         </Button>
       </Modal.Trigger>
 
-      <Modal.Content>
+      <Modal.Content className="min-h-[394px] max-h-[394px]">
         <TextField
           placeholder="Procure por uma cidade..."
           icon={<SearchIcon className="size-5" />}

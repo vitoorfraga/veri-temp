@@ -71,8 +71,10 @@ export const SearchCityList = ({
   if (isLoading) {
     return (
       <div className="flex flex-col gap-2 mt-6 h-full">
-        <Skeleton />
-        <Skeleton />
+        {/* 👉🏻 Renderiza 5 Rows do skeleton */}
+        {Array.from({ length: 7 }, (_, index) => (
+          <Skeleton key={index} />
+        ))}
       </div>
     )
   }
@@ -142,7 +144,7 @@ export const SearchCityList = ({
     <div className="mt-6">
       <span className="text-sm font-bold text-sky-900">Resultados</span>
 
-      <div className="flex flex-col gap-2 mt-4 ">
+      <div className="flex flex-col gap-2 mt-4 overflow-y-auto max-h-64 pr-2">
         {/* 👉🏻 Renderiza resultado da busca. */}
         {parsedData?.map((location: Location, index: number) => {
           return (
