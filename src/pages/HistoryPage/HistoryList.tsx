@@ -9,6 +9,8 @@ import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { useContext } from 'react'
 import { WeatherForecastServiceContext } from '../../contexts/WeatherForecastContext'
+import { FormatToCelsius } from '../../helpers/formatToCelsius'
+import { ExternalLink } from 'lucide-react'
 
 export const HistoryList = () => {
   const { updateLocation } = useContext(WeatherForecastServiceContext)
@@ -31,6 +33,9 @@ export const HistoryList = () => {
         },
       )
 
+      // 👉🏻 Formata temperatura anterior
+      const formattedTemperature = FormatToCelsius(historyItem.temperature)
+
       const homePageWithParamsUrl = `/?lat=${historyItem.lat}&long=${historyItem.lon}`
 
       const newLocation = {
@@ -50,14 +55,23 @@ export const HistoryList = () => {
             <span className="truncate block">{formattedHistoryLocation}</span>
           </Table.Data>
           <Table.Data>{formattedDate}</Table.Data>
+          <Table.Data className=" w-28 flex items-center justify-center">
+            <Badge
+              variant={formattedTemperature !== '-' ? 'outline' : 'destructive'}
+            >
+              {formattedTemperature}
+            </Badge>
+          </Table.Data>
           <Table.Data>{historyItem.service}</Table.Data>
           <Table.Data>
             <Badge variant="outline">
               <Link
                 to={homePageWithParamsUrl}
                 onClick={() => updateLocation(newLocation)}
+                className="flex items-center gap-1.5"
               >
-                Ver novamente
+                Consultar Clima atual
+                <ExternalLink className="size-4" />
               </Link>
             </Badge>
           </Table.Data>
@@ -73,6 +87,7 @@ export const HistoryList = () => {
           <Table.Header className="w-28">País</Table.Header>
           <Table.Header className="w-72">Localização</Table.Header>
           <Table.Header>Data</Table.Header>
+          <Table.Header>Temperatura</Table.Header>
           <Table.Header>API</Table.Header>
           <Table.Header className="w-60">Ações</Table.Header>
         </Table.HeadRow>

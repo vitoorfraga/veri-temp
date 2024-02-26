@@ -13,6 +13,9 @@ import { useNavigate } from 'react-router-dom'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { HistoryItem } from '../../@types/HistoryItem'
 import { CountryFlag } from '../CountryFlag'
+import { getWeatherForecastWithGeolocation } from '../../helpers/getWeatherForecastWithGeolocation'
+import { parseWeatherForecastService } from '../../helpers/parseWeatherForecastService'
+import { toast } from 'sonner'
 
 interface SearchCityListProps {
   searchParam: string
@@ -111,16 +114,45 @@ export const SearchCityList = ({
   }
 
   // 👉🏻 Atualiza os parâmetros da URL.
-  const handleSelectALocation = (city: Location) => {
+  const handleSelectALocation = async (city: Location) => {
     const formattedLatitude = city.lat.toFixed(2)
     const formattedLongitude = city.lon.toFixed(2)
 
+    const geolocation = {
+      lat: formattedLatitude,
+      long: formattedLongitude,
+    }
+
     // 👉🏻 Adiciona a localização no histórico.
-    const newHistory: HistoryItem = {
+    let newHistory: HistoryItem = {
       ...city,
       date: new Date().toLocaleString(),
       service: selectedAPIService,
     }
+
+    try {
+      const response = await getWeatherForecastWithGeolocation({
+        geolocation,
+        selectedAPIService,
+      })
+
+      const parsedResponse = parseWeatherForecastService(
+        selectedAPIService,
+        response,
+      )
+
+      const currentTemperature = parsedResponse[0].temperature.current
+
+      newHistory = {
+        ...newHistory,
+        temperature: currentTemperature,
+      }
+    } catch {
+      toast.error(
+        'Não foi possível salvar a temperatura atual no seu histórico.',
+      )
+    }
+
     setHistory([...history, newHistory])
 
     // 👉🏻 Atualiza a localização no contexto.
