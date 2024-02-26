@@ -9,6 +9,7 @@ interface getWeatherForecastWithGeolocationParams {
   }
 }
 
+// 👉🏻 Realiza a requisição para a API de previsão do tempo com base na geolocalização.
 export const getWeatherForecastWithGeolocation = ({
   geolocation,
   selectedAPIService,

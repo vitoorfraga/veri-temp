@@ -47,11 +47,12 @@ const WeatherForecastServiceProvider = ({
   }
 
   const configureServices = (service: WeatherForecastServices) => {
+    const openWeatherKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY
     const services = {
       openWeather: {
         endPoint: 'https://api.openweathermap.org/',
         params: {
-          apiKey: 'b6823c734e3592d5e1aa37686f6b4227',
+          apiKey: openWeatherKey,
           lang: 'pt_br',
           units: 'metric',
         },
