@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 interface BadgeProps {
   children: React.ReactNode
   className?: string
-  variant?: 'success' | 'destructive' | 'outline' | 'warn'
+  variant?: 'success' | 'destructive' | 'outline' | 'warn' | 'sky'
 }
 
 export const Badge = ({
@@ -18,6 +18,7 @@ export const Badge = ({
     warn: 'bg-yellow-600/10 text-yellow-600',
     destructive: 'bg-red-400/10 text-red-400',
     outline: 'border border-gray-300',
+    sky: 'bg-sky-400/25 text-sky-600',
   }
 
   const chosenVariantAndBaseStyle = badgeVariants[variant] + baseStyle
