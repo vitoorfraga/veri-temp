@@ -71,7 +71,7 @@ export const SearchCityList = ({
   if (isLoading) {
     return (
       <div className="flex flex-col gap-2 mt-6 h-full">
-        {/* 👉🏻 Renderiza 5 Rows do skeleton */}
+        {/* 👉🏻 Renderiza 7 Rows do skeleton */}
         {Array.from({ length: 7 }, (_, index) => (
           <Skeleton key={index} />
         ))}
