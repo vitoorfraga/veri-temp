@@ -35,7 +35,6 @@ export const CurrentWeatherForecast = ({
           return response
         })
         .catch((error: AxiosError) => {
-          console.log(error)
           throw error
         })
     }
@@ -82,7 +81,6 @@ export const CurrentWeatherForecast = ({
 
         <div className="grid gap-9 mt-6 grid-cols-4 ">
           {upcomingWeatherForecasts.map((forecast, index) => {
-            console.log(forecast)
             return (
               <WeatherForecastCard weatherForecast={forecast} key={index} />
             )
