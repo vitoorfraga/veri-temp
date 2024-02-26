@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { HomePage } from '../pages/HomePage'
 import { DefaultLayout } from '../layouts/DefaultLayout'
+import { HistoryPage } from '../pages/HistoryPage'
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/history',
-        element: <h1>History Page</h1>,
+        element: <HistoryPage />,
       },
     ],
   },
